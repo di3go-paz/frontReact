@@ -3,6 +3,7 @@ import { Producto } from "../types/Producto";
 import { fetchProductos, fetchDepartamentos, fetchProveedores, fetchTiposProductos } from "../api/Inventarioapi";
 import { InventarioTable } from "../components/inventarioTable";
 import { FiltroBusqueda } from "../components/FiltroBusqueda";
+import MainLayout from "../components/MainLayouts";
 
 export default function InventarioPage() {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -28,14 +29,7 @@ export default function InventarioPage() {
         setProductosFiltrados(productosRes); // mostrar todo al inicio
       } catch (error) {
         console.error("Error cargando datos", error);
-      }
-    };
-
-    cargarDatos();
-  }, []);
-
-  useEffect(() => {
-    const textoBusqueda = busqueda.toLowerCase();
+ export default function InventarioPage() {
 
     const filtrados = productos.filter(p => {
       if (!busqueda) return true;
@@ -61,16 +55,18 @@ export default function InventarioPage() {
   }, [busqueda, filtroSeleccionado, productos]);
 
   return (
-    <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-bold mb-4">Inventario</h1>
+    <MainLayout>
+      <div className="space-y-4">
+        <h1 className="text-2xl font-bold mb-4">Inventario</h1>
 
-      <FiltroBusqueda
-        filtroSeleccionado={filtroSeleccionado}
-        onFiltroSeleccionado={setFiltroSeleccionado}
-        onBuscar={setBusqueda}
-      />
+    <FiltroBusqueda
+      filtroSeleccionado={filtroSeleccionado}
+      onFiltroSeleccionado={setFiltroSeleccionado}
+      onBuscar={setBusqueda}
+    />
 
-      <InventarioTable productos={productosFiltrados} />
-    </div>
-  );
+    <InventarioTable productos={productosFiltrados} />
+      </div>
+    </MainLayout>
+    );
 }

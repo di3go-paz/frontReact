@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import App from "./App";
+import HomePage from "./pages/home";
 import InventarioPage from "./pages/inventario";
 
 export function RouterApp() {
@@ -7,8 +7,9 @@ export function RouterApp() {
     <BrowserRouter>
       <Routes>
         {/* Página principal (puedes cambiarla si quieres otra página inicial) */}
-        <Route path="/" element={<Navigate to="/inventario" />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/inventario" element={<InventarioPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

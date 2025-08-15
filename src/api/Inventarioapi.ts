@@ -1,6 +1,6 @@
 import { Producto } from '../types/Producto';
 
-const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/inventory/api/v1';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api/inventory';
 
 /**
  * Obtiene la lista de productos del backend
