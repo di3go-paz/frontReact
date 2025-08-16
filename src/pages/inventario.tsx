@@ -55,14 +55,14 @@ export default function InventarioPage() {
   return (
     <MainLayout>
       <div className="space-y-4">
-        <h1 className="text-2xl font-bold mb-4">Inventario</h1>
+          <h1 className="text-2xl font-bold mb-4 text-center">Inventario</h1>
           <FiltroBusqueda
           filtroSeleccionado={filtroSeleccionado}
-          onFiltroSeleccionado={setFiltroSeleccionado}
-          onBuscar={setBusqueda}
-        />
-        <InventarioTable productos={productosFiltrados} />
-      </div>
-    </MainLayout>
+            onFiltroSeleccionado={setFiltroSeleccionado}
+            onBuscar={setBusqueda}
+          />
+          <InventarioTable productos={productosFiltrados} />
+        </div>
+      </MainLayout>
     );
 }
