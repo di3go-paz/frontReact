@@ -12,12 +12,19 @@ export async function login(
   password: string
 ): Promise<string> {
   try {
-    const { data } = await axios.post<LoginResponse>(AUTH_URL, {
-      username,
-      password,
-    });
+    const { data } = await axios.post<LoginResponse>(
+      AUTH_URL,
+      { username, password },
+      { headers: { 'Content-Type': 'application/json' } }
+    );
     return data.token;
-  } catch (error) {
-    throw new Error('Invalid credentials');
+    } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      const message =
+        (error.response?.data as { detail?: string })?.detail ||
+        'Credenciales inválidas';
+      throw new Error(message);
+    }
+    throw new Error('Credenciales inválidas');
   }
 }
