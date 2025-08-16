@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <MainLayout>
-      <h2 className="text-2xl font-bold mb-4">Inicio</h2>
+      <h2 className="text-2xl font-bold mb-4 text-purple-400">Inicio</h2>
       <div className="grid gap-4 md:grid-cols-2">
         {availableMenus.map((item) => (
           <MenuCard key={item.path} to={item.path} label={item.label} />

@@ -10,7 +10,7 @@ export const FiltroBusqueda = ({ filtroSeleccionado, onFiltroSeleccionado, onBus
       <select
         value={filtroSeleccionado}
         onChange={(e) => onFiltroSeleccionado(e.target.value as any)}
-        className="border p-2 rounded"
+        className="border border-gray-700 bg-gray-800 text-gray-100 p-2 rounded"
       >
         <option value="nombre">Nombre</option>
         <option value="tipo">Tipo</option>
@@ -22,7 +22,7 @@ export const FiltroBusqueda = ({ filtroSeleccionado, onFiltroSeleccionado, onBus
         type="text"
         placeholder="Buscar..."
         onChange={(e) => onBuscar(e.target.value)}
-        className="border p-2 rounded flex-1"
+        className="border border-gray-700 bg-gray-800 text-gray-100 placeholder-gray-400 p-2 rounded flex-1"
       />
     </div>
   );

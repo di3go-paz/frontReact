@@ -9,9 +9,9 @@ export default function MenuCard({ to, label }: Props) {
   return (
     <Link
       to={to}
-      className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition"
+      className="block p-6 bg-gray-800 rounded-lg shadow hover:bg-gray-700 transition"
     >
-      <span className="text-lg font-medium text-gray-700">{label}</span>
+      <span className="text-lg font-medium text-purple-400">{label}</span>
     </Link>
   );
 }
