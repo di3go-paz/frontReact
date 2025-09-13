@@ -1,14 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
-import { RouterApp } from "./router"; // <--- Importa el enrutador
-import { AuthProvider } from "./auth";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import { BrowserRouter } from "react-router-dom"
+import { AuthProvider } from "./contexts/authContext"
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
-root.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterApp />
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
-);
+)

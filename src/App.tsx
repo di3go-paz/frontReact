@@ -1,25 +1,46 @@
-import React from 'react';
-import './App.css';
+import { Routes, Route } from "react-router-dom"
+import LoginPage from "./pages/login"
+import HomePage from "./pages/home"
+import InventarioPage from "./pages/inventario"
+import ProductoDetallePage from "./pages/productoDetalle"
+import { PrivateRoute } from "./components/PrivateRoute"
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
 
-export default App;
+      {/* Página de inicio protegida */}
+      <Route
+        path="/home"
+        element={
+          <PrivateRoute>
+            <HomePage />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Inventario protegido */}
+      <Route
+        path="/inventario"
+        element={
+          <PrivateRoute>
+            <InventarioPage />
+          </PrivateRoute>
+        }
+      />
+      {/* Detalle de producto protegido */}
+      <Route
+        path="/inventario/:id"
+        element={
+          <PrivateRoute>
+            <ProductoDetallePage />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Por si alguien entra a "/" lo mandamos al login */}
+      <Route path="/" element={<LoginPage />} />
+    </Routes>
+  )
+}

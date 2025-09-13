@@ -54,15 +54,17 @@ export default function InventarioPage() {
 
   return (
     <MainLayout>
-      <div className="space-y-4">
-          <h1 className="text-2xl font-bold mb-4 text-center">Inventario</h1>
+      <div className="min-h-screen flex flex-col items-center justify-center bg-dark-gradient py-10">
+        <h1 className="text-3xl font-bold mb-8 text-textMain tracking-tight text-center">Inventario</h1>
+        <div className="w-full max-w-4xl flex flex-col items-center gap-8">
           <FiltroBusqueda
-          filtroSeleccionado={filtroSeleccionado}
+            filtroSeleccionado={filtroSeleccionado}
             onFiltroSeleccionado={setFiltroSeleccionado}
             onBuscar={setBusqueda}
           />
           <InventarioTable productos={productosFiltrados} />
         </div>
-      </MainLayout>
-    );
+      </div>
+    </MainLayout>
+  );
 }

@@ -1,30 +1,33 @@
-import axios from 'axios';
+import axios from "axios";
 
-const AUTH_URL =
-  process.env.REACT_APP_AUTH_URL || 'http://localhost:8000/users/api/token-auth/';
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  rol: string;
+}
 
 interface LoginResponse {
   token: string;
+  user: User;
 }
 
-export async function login(
+const AUTH_URL =
+  process.env.REACT_APP_AUTH_URL ||
+  "http://djangoerp.duckdns.org/users/api/token-auth/";
+
+export async function loginApi(
   username: string,
   password: string
-): Promise<string> {
-  try {
-    const { data } = await axios.post<LoginResponse>(
-      AUTH_URL,
-      { username, password },
-      { headers: { 'Content-Type': 'application/json' } }
-    );
-    return data.token;
-    } catch (error: unknown) {
-    if (axios.isAxiosError(error)) {
-      const message =
-        (error.response?.data as { detail?: string })?.detail ||
-        'Credenciales inválidas';
-      throw new Error(message);
-    }
-    throw new Error('Credenciales inválidas');
-  }
+): Promise<{ token: string; user: User }> {
+  const { data } = await axios.post<LoginResponse>(
+    AUTH_URL,
+    { username, password },
+    { headers: { "Content-Type": "application/json" } }
+  );
+
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("user", JSON.stringify(data.user));
+
+  return { token: data.token, user: data.user };
 }
