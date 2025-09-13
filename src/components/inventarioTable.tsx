@@ -1,4 +1,3 @@
-"use client"
 
 import type { Producto } from "../types/Producto"
 import { useState } from "react"

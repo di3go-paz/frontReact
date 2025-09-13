@@ -1,5 +1,3 @@
-"use client"
-
 import { useAuth } from "../contexts/authContext"
 
 interface MenuItem {
