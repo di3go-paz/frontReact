@@ -25,9 +25,6 @@ export async function loginApi(
     { username, password },
     { headers: { "Content-Type": "application/json" } }
   );
-
-  localStorage.setItem("token", data.token);
-  localStorage.setItem("user", JSON.stringify(data.user));
-
   return { token: data.token, user: data.user };
 }
+

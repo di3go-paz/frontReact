@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Dashboard() {
   return (
     <div className="min-h-screen flex bg-dark-gradient font-sans">

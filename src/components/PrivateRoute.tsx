@@ -23,3 +23,4 @@ export function PrivateRoute({ children, roles }: PrivateRouteProps) {
   // 3. Si pasa las validaciones → renderizamos el children (el dashboard o la página protegida)
   return <>{children}</>
 }
+

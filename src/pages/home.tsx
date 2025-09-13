@@ -1,5 +1,3 @@
-"use client"
-
 import { useAuth } from "../contexts/authContext"
 
 interface MenuItem {
@@ -28,28 +26,26 @@ export default function HomePage() {
   const availableMenus = MENU_ITEMS.filter((item) => item.roles.includes(user.rol))
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-6">Bienvenido, {user.username} 👋</h1>
-      <h2 className="text-lg mb-4"><strong>{user.rol}</strong></h2>
+    <div className="min-h-screen bg-dark-gradient text-textMain flex flex-col items-center justify-center p-6">
+      <h1 className="text-3xl font-bold mb-2">Bienvenido, {user.username} 👋</h1>
+      <p className="text-textSecondary mb-8">{user.rol}</p>
 
-      <nav className="grid gap-4">
+      <nav className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-lg">
         {availableMenus.map((item) => (
           <a
             key={item.path}
             href={item.path}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition"
+            className="card-glass px-6 py-4 text-center hover:bg-cardGlass/80 transition-colors"
           >
             {item.label}
           </a>
         ))}
       </nav>
 
-      <button
-        onClick={logout}
-        className="mt-8 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-      >
+      <button onClick={logout} className="mt-10 btn-modern">
         Cerrar sesión
       </button>
     </div>
   )
 }
+

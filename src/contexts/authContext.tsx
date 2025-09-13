@@ -1,5 +1,3 @@
-"use client";
-
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { loginApi, type User } from "../api/auth";
 
@@ -35,13 +33,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Login
   const login = async (username: string, password: string): Promise<User> => {
-  const { token, user } = await loginApi(username, password);
+    const { token, user } = await loginApi(username, password);
 
-  setToken(token);
-  setUser(user);
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
 
-  return user;
-};
+    setToken(token);
+    setUser(user);
+
+    return user;
+  };
 
   // Logout
   const logout = () => {
@@ -65,3 +66,4 @@ export function useAuth() {
   }
   return context;
 }
+

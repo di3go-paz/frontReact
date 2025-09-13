@@ -1,5 +1,3 @@
-"use client"
-
 interface Props {
   filtroSeleccionado: "nombre" | "tipo" | "departamento" | "proveedor"
   onFiltroSeleccionado: (valor: "nombre" | "tipo" | "departamento" | "proveedor") => void
@@ -45,3 +43,4 @@ export const FiltroBusqueda = ({ filtroSeleccionado, onFiltroSeleccionado, onBus
     </div>
   )
 }
+
